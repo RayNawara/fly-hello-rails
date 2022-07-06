@@ -1,23 +1,22 @@
-# fly.toml file generated for fly-hello-rails on 2022-03-24T21:58:29+01:00
+# fly.toml file generated for fly-github-cicd on 2022-07-06T11:45:15-04:00
 
-app = "fly-hello-rails"
-
+app = "fly-github-cicd"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
 [build]
   [build.args]
-    BUNDLER_VERSION = "2.3.9"
+    BUNDLER_VERSION = "2.2.32"
     NODE_VERSION = "14"
-    RUBY_VERSION = "3.1.1"
-    YARN_VERSION = "2"
+    RUBY_VERSION = "3.1.0"
 
 [deploy]
   release_command = "bundle exec rails db:migrate"
 
 [env]
   PORT = "8080"
+  SERVER_COMMAND = "bundle exec puma -C config/puma.rb"
 
 [experimental]
   allowed_public_ports = []
@@ -29,7 +28,6 @@ processes = []
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
-
   [services.concurrency]
     hard_limit = 25
     soft_limit = 20
